@@ -1,0 +1,11 @@
+@import '../../styles/mixins.scss';
+
+.custom-select-container {
+  @include styled-select(
+    $border-color: #9333ea,
+    $placeholder-color: #6b7280,
+    $selected-color: #9333ea,
+    $dropdown-bg: #fdf2f8,
+    $option-color: #4b5563
+  );
+}

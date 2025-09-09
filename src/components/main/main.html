@@ -1,0 +1,63 @@
+<div class="material-wrapper">
+<h2>Material Cost</h2>
+<div class="flex-row">
+    <app-select [formControl]="materialName" [options]="materialConstant"
+        [placeholder]="'Please Select A Material'"></app-select>
+    <input type="number" [formControl]="materialQty" placeholder="Please Enter The Material Qty">
+</div>
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th>Particular</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{calculatedMaterialCost()?.particular}}</td>
+                <td>{{calculatedMaterialCost()?.qty}}</td>
+                <td>{{calculatedMaterialCost()?.price}}</td>
+                <td>{{calculatedMaterialCost()?.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</div>
+<div class="sales_data-wrapper">
+<h2>Sales Data</h2>
+<div class="flex-row">
+    <app-select [formControl]="salesDropDown" [options]="salesConstant"
+        [placeholder]="'Please Select A sales Item'"></app-select>
+    <input type="number" [formControl]="salesQty" placeholder="Please Enter The Sales Qty">
+    <input type="number" [formControl]="salesSellingPrice" placeholder="Please Enter The Selling price">
+</div>
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th>Size</th>
+                <th>O.Cost</th>
+                <th>Qty</th>
+                <th>Selling Price</th>
+                <th>Total O.cost</th>
+                <th>Price Average</th>
+                <th>Total Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{salesUserSelectedLineItem()?.size}}</td>
+                <td>{{salesUserSelectedLineItem()?.originalCost}}</td>
+                <td>{{salesUserSelectedLineItem()?.qty}}</td>
+                <td>{{salesUserSelectedLineItem()?.sellingPrice}}</td>
+                <td>{{salesUserSelectedLineItem()?.totalOriginalCost}}</td>
+                <td>{{salesUserSelectedLineItem()?.average}}</td>
+                <td>{{salesUserSelectedLineItem()?.totalProfit}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</div>

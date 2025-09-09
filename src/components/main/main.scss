@@ -1,0 +1,8 @@
+@import '../../styles/mixins.scss';
+
+.material-wrapper {
+    @include gradient-card();
+}
+.sales_data-wrapper{
+ @include gradient-card();
+}
