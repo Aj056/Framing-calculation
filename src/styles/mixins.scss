@@ -1,0 +1,175 @@
+@mixin styled-scrollbar($thumb-color: #9333ea) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@mixin styled-select(
+  $border-color: #9333ea,
+  $placeholder-color: #6b7280,
+  $selected-color: #9333ea,
+  $dropdown-bg: #fdf2f8,
+  $option-color: #4b5563
+) {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  font-family: 'Segoe UI', sans-serif;
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .select-box {
+    background: #fff;
+    border: 2px solid $border-color;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .selected-value {
+      color: $placeholder-color;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .options-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $dropdown-bg;
+    border: 2px solid $border-color;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+
+    @include styled-scrollbar($selected-color);
+
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: $option-color;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: lighten($dropdown-bg, 5%);
+      }
+
+      &.selected {
+        background: $selected-color;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@mixin styled-input {
+    padding: 10px 14px;
+    border: 2px solid #c084fc;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        border-color: #9333ea;
+        outline: none;
+    }
+}
+
+@mixin styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+
+    th,
+    td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e2e8f0;
+        text-align: left;
+    }
+
+    th {
+        background: linear-gradient(to right, #9333ea, #f43f5e);
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    td {
+        color: #4b5563;
+    }
+}
+
+@mixin gradient-card {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #fdf2f8, #e0e7ff);
+    max-width: 700px;
+
+    h2 {
+        margin-bottom: 16px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #9333ea;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .flex-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+
+        app-select {
+            flex: 1 1 60%;
+        }
+
+        input[type="number"] {
+            flex: 1 1 35%;
+            @include styled-input;
+        }
+    }
+
+    section {
+        table {
+            @include styled-table;
+        }
+    }
+}
