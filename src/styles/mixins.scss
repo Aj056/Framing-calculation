@@ -18,13 +18,11 @@
   }
 }
 
-@mixin styled-select(
-  $border-color: #9333ea,
+@mixin styled-select($border-color: #9333ea,
   $placeholder-color: #6b7280,
   $selected-color: #9333ea,
   $dropdown-bg: #fdf2f8,
-  $option-color: #4b5563
-) {
+  $option-color: #4b5563) {
   position: relative;
   width: 100%;
   max-width: 300px;
@@ -51,6 +49,7 @@
 
     .arrow {
       transition: transform 0.3s ease;
+
       &.open {
         transform: rotate(180deg);
       }
@@ -91,85 +90,98 @@
 }
 
 @mixin styled-input {
-    padding: 10px 14px;
-    border: 2px solid #c084fc;
-    border-radius: 6px;
-    font-size: 16px;
-    background: #fff;
-    color: #333;
-    transition: border-color 0.3s ease;
+  padding: 10px 14px;
+  border: 2px solid #c084fc;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
 
-    &:focus {
-        border-color: #9333ea;
-        outline: none;
-    }
+  &:focus {
+    border-color: #9333ea;
+    outline: none;
+  }
 }
 
 @mixin styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  overflow: hidden;
 
-    th,
-    td {
-        padding: 12px 16px;
-        border-bottom: 1px solid #e2e8f0;
-        text-align: left;
-    }
+  th,
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+  }
 
-    th {
-        background: linear-gradient(to right, #9333ea, #f43f5e);
-        color: white;
-        font-weight: 600;
-    }
+  th {
+    background: linear-gradient(to right, #9333ea, #f43f5e);
+    color: white;
+    font-weight: 600;
+  }
 
-    tr:last-child td {
-        border-bottom: none;
-    }
+  tr:last-child td {
+    border-bottom: none;
+  }
 
-    td {
-        color: #4b5563;
-    }
+  td {
+    color: #4b5563;
+  }
 }
 
 @mixin gradient-card {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #fdf2f8, #e0e7ff);
-    max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #fdf2f8, #e0e7ff);
+  max-width: 700px;
 
-    h2 {
+  h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #9333ea;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    app-select {
+      flex: 1 1 50%;
+    }
+
+    .flex-column {
+      flex: 1 1 50%;
+
+      .form-label {
         margin-bottom: 16px;
         font-size: 24px;
         font-weight: 700;
         color: #9333ea;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      input[type="number"] {
+        @include styled-input;
+      }
     }
+  }
 
-    .flex-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 20px;
+  section {
+    overflow-x: scroll;
 
-        app-select {
-            flex: 1 1 60%;
-        }
-
-        input[type="number"] {
-            flex: 1 1 35%;
-            @include styled-input;
-        }
+    table {
+      @include styled-table;
     }
-
-    section {
-        table {
-            @include styled-table;
-        }
-    }
+  }
 }
